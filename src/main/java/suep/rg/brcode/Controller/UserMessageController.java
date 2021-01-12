@@ -9,15 +9,7 @@ import suep.rg.brcode.Result.Result;
 public interface UserMessageController {
 
     /**
-     * 根据userId返回图像，加载成二进制流
-     * 例子：
-     * public byte[] getImage() throws IOException {
-     *         File file = new File("D:/test.jpg");
-     *         FileInputStream inputStream = new FileInputStream(file);
-     *         byte[] bytes = new byte[inputStream.available()];
-     *         inputStream.read(bytes, 0, inputStream.available());
-     *         return bytes;
-     *     }
+     * 根据userId返回图像，加载成二进制
      * @param userId 用户ID
      * @return 二进制数组
      */

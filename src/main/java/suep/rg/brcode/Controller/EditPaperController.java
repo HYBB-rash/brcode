@@ -40,5 +40,5 @@ public interface EditPaperController {
     @CrossOrigin
     @ResponseBody
     @PostMapping(value = "/SavePaperContentAndSend")
-    public Result savaPaperAndSend(@RequestBody VueEditPaper paper);
+    public Result savePaperAndSend(@RequestBody VueEditPaper paper);
 }
