@@ -1,15 +1,13 @@
 package suep.rg.brcode.Controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import suep.rg.brcode.Entity.rev.UserIdAndPaperId;
 import suep.rg.brcode.Entity.send.VueEditPaper;
 import suep.rg.brcode.Result.Result;
 
 @Controller
+@RequestMapping(value = "/api")
 public interface EditPaperController {
 
     /**

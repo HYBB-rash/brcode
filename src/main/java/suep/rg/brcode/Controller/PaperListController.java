@@ -6,6 +6,7 @@ import suep.rg.brcode.Entity.rev.UserId;
 import suep.rg.brcode.Result.Result;
 
 @Controller
+@RequestMapping(value = "/api")
 public interface PaperListController {
 
     /**

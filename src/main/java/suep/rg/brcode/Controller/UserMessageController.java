@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import suep.rg.brcode.Result.Result;
 
 @Controller
+@RequestMapping(value = "/api")
 public interface UserMessageController {
 
     /**

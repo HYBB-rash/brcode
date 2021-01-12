@@ -6,6 +6,7 @@ import suep.rg.brcode.Entity.rev.IPV4;
 import suep.rg.brcode.Result.Result;
 
 @Controller
+@RequestMapping(value = "/api")
 public interface ClickPaperController {
 
     /**
