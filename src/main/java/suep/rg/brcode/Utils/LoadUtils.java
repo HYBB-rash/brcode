@@ -2,14 +2,10 @@ package suep.rg.brcode.Utils;
 
 import suep.rg.brcode.Entity.*;
 import suep.rg.brcode.Entity.rev.IPV4;
-import suep.rg.brcode.Entity.send.VueBaseMessage;
-import suep.rg.brcode.Entity.send.VueComment;
-import suep.rg.brcode.Entity.send.VuePaper;
-import suep.rg.brcode.Entity.send.VuePaperItem;
+import suep.rg.brcode.Entity.send.*;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,5 +82,25 @@ public class LoadUtils {
         vueBaseMessage.setWatch(userMessage.getWatch());
         vueBaseMessage.setUsername(user.getUsername());
         return vueBaseMessage;
+    }
+
+    public static Paper load(VuePaper vuePaper) {
+        Paper paper = new Paper();
+        paper.setId(vuePaper.getPaperId());
+        paper.setTitle(vuePaper.getTitle());
+        paper.setContent(vuePaper.getContent());
+        return paper;
+    }
+
+    public static PaperMessage initPaperMessage(Integer userId, Integer paperId) {
+        PaperMessage paperMessage = new PaperMessage();
+        paperMessage.setLove(0);
+        paperMessage.setStatus(0);
+        paperMessage.setTime(TimeUtils.getNowTime());
+        paperMessage.setPaperId(paperId);
+        paperMessage.setWatch(0);
+        paperMessage.setUserId(userId);
+        paperMessage.setId(null);
+        return paperMessage;
     }
 }
