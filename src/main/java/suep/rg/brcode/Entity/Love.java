@@ -14,7 +14,9 @@ public class Love {
     @Column(name = "id")
     Integer id;
 
+    @Column(name = "user_id")
     Integer userId;
+    @Column(name = "paper_id")
     Integer paperId;
     String time;
 

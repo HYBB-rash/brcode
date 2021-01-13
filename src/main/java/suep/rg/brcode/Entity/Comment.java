@@ -1,4 +1,4 @@
-package suep.rg.brcode.Entity.send;
+package suep.rg.brcode.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -14,8 +14,11 @@ public class Comment {
     @Column(name = "id")
     Integer id;
 
+    @Column(name = "paper_id")
     Integer paperId;
+    @Column(name = "comment_id")
     Integer commentId;
+    @Column(name = "user_id")
     Integer userId;
     String content;
     String time;

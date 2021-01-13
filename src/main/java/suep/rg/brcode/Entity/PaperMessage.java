@@ -14,7 +14,9 @@ public class PaperMessage {
     @Column(name = "id")
     Integer id;
 
+    @Column(name = "paper_id")
     Integer paperID;
+    @Column(name = "user_id")
     Integer userId;
     Integer love;
     Integer watch;

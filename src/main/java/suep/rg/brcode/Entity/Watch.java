@@ -15,6 +15,7 @@ public class Watch {
     Integer id;
 
     String ipv4;
+    @Column(name = "paper_id")
     Integer paperId;
     String time;
 
