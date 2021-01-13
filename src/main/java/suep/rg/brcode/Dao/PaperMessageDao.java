@@ -12,5 +12,4 @@ public interface PaperMessageDao extends JpaRepository<PaperMessage, Integer> {
 
     PaperMessage findPaperMessageByPaperId(Integer paperId);
     Page<PaperMessage> findPaperMessageByUserId(Integer userId, Pageable pageable);
-    List<PaperMessage> getPaperMessageByUserId(Integer userId);
 }

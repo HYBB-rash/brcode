@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import suep.rg.brcode.Dao.*;
 import suep.rg.brcode.Entity.Paper;
 import suep.rg.brcode.Entity.PaperMessage;
+import suep.rg.brcode.Entity.UserMessage;
 import suep.rg.brcode.Entity.rev.IPV4;
 import suep.rg.brcode.Entity.send.VueComment;
 import suep.rg.brcode.Entity.send.VuePaper;
@@ -28,22 +29,26 @@ public class ClickPaperServiceImp implements ClickPaperService {
     LoveDao loveDao;
     @Autowired
     CommentDao commentDao;
+    @Autowired
+    UserMessageDao userMessageDao;
 
-    private String getNowTime(){
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
-        simpleDateFormat.applyPattern("yyyy-MM-dd HH:mm:ss");
-        Date date = new Date();
-        return simpleDateFormat.format(date);
+    private void refreshPaperWatchMessage(Integer paperId) {
+        PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperId(paperId);
+        paperMessage.setWatch(paperMessage.getWatch() + 1);
+        paperMessageDao.save(paperMessage);
+        UserMessage userMessage = userMessageDao.findUserMessageById(paperMessage.getUserId());
+        userMessage.setWatch(userMessage.getWatch() + 1);
+        userMessageDao.save(userMessage);
     }
 
     @Override
     public void recordWatch(IPV4 ipv4, Integer paperId) {
         watchDao.save(LoadUtils.load(ipv4, paperId));
+        refreshPaperWatchMessage(paperId);
     }
 
     @Override
     public VuePaper getPaper(Integer paperId) {
-
         Paper paper = paperDao.findPaperById(paperId);
         return LoadUtils.load(paper);
     }
@@ -67,6 +72,9 @@ public class ClickPaperServiceImp implements ClickPaperService {
         PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperId(paperId);
         paperMessage.setLove(paperMessage.getLove() + 1);
         paperMessageDao.save(paperMessage);
+        UserMessage userMessage = userMessageDao.findUserMessageById(paperMessage.getUserId());
+        userMessage.setLove(userMessage.getLove() + 1);
+        userMessageDao.save(userMessage);
     }
     @Override
     public Boolean loveThisPaper(Integer paperId, Integer userId) {

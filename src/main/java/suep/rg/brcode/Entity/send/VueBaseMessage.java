@@ -3,6 +3,7 @@ package suep.rg.brcode.Entity.send;
 public class VueBaseMessage {
 
     private Integer id;
+    private String username;
     private Integer watch;
     private Integer love;
     private String mail;
@@ -12,6 +13,8 @@ public class VueBaseMessage {
         final StringBuilder sb = new StringBuilder("{");
         sb.append("\"id\":")
                 .append(id);
+        sb.append(",\"username\":\"")
+                .append(username).append('\"');
         sb.append(",\"watch\":")
                 .append(watch);
         sb.append(",\"love\":")
@@ -20,6 +23,14 @@ public class VueBaseMessage {
                 .append(mail).append('\"');
         sb.append('}');
         return sb.toString();
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getId() {

@@ -2,10 +2,15 @@ package suep.rg.brcode.Utils;
 
 import suep.rg.brcode.Entity.*;
 import suep.rg.brcode.Entity.rev.IPV4;
+import suep.rg.brcode.Entity.send.VueBaseMessage;
 import suep.rg.brcode.Entity.send.VueComment;
 import suep.rg.brcode.Entity.send.VuePaper;
 import suep.rg.brcode.Entity.send.VuePaperItem;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,5 +68,23 @@ public class LoadUtils {
         vuePaperItem.setWatch(paperMessage.getWatch());
         vuePaperItem.setUsername(username);
         return vuePaperItem;
+    }
+
+    public static byte[] load(String url) throws IOException {
+        File file = new File(url);
+        FileInputStream fileInputStream = new FileInputStream(file);
+        byte[] bytes = new byte[fileInputStream.available()];
+        fileInputStream.read(bytes, 0, fileInputStream.available());
+        return bytes;
+    }
+
+    public static VueBaseMessage load(User user, UserMessage userMessage) {
+        VueBaseMessage vueBaseMessage = new VueBaseMessage();
+        vueBaseMessage.setId(user.getId());
+        vueBaseMessage.setMail(userMessage.getMail());
+        vueBaseMessage.setLove(userMessage.getLove());
+        vueBaseMessage.setWatch(userMessage.getWatch());
+        vueBaseMessage.setUsername(user.getUsername());
+        return vueBaseMessage;
     }
 }

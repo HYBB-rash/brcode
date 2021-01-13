@@ -3,6 +3,8 @@ package suep.rg.brcode.Service;
 import org.springframework.stereotype.Service;
 import suep.rg.brcode.Entity.send.VueBaseMessage;
 
+import java.io.IOException;
+
 @Service
 public interface UserMessageService {
 
@@ -19,7 +21,7 @@ public interface UserMessageService {
      * @param userId 用户ID
      * @return 二进制数组
      */
-    public byte[] getUserIcon(Integer userId);
+    public byte[] getUserIcon(Integer userId) throws IOException;
 
     /**
      * 根据用户ID返回用户的姓名
@@ -33,7 +35,7 @@ public interface UserMessageService {
      * @param paperId 文章ID
      * @return Integer 用户的ID即可
      */
-    public String getUserId(Integer paperId);
+    public Integer getUserId(Integer paperId);
 
     /**
      * 根据userID返回user的基础信息
