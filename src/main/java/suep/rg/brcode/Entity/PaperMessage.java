@@ -15,7 +15,7 @@ public class PaperMessage {
     Integer id;
 
     @Column(name = "paper_id")
-    Integer paperID;
+    Integer paperId;
     @Column(name = "user_id")
     Integer userId;
     Integer love;
@@ -29,7 +29,7 @@ public class PaperMessage {
         sb.append("\"id\":")
                 .append(id);
         sb.append(",\"paperID\":")
-                .append(paperID);
+                .append(paperId);
         sb.append(",\"userId\":")
                 .append(userId);
         sb.append(",\"love\":")
@@ -52,12 +52,12 @@ public class PaperMessage {
         this.id = id;
     }
 
-    public Integer getPaperID() {
-        return paperID;
+    public Integer getPaperId() {
+        return paperId;
     }
 
-    public void setPaperID(Integer paperID) {
-        this.paperID = paperID;
+    public void setPaperId(Integer paperID) {
+        this.paperId = paperID;
     }
 
     public Integer getUserId() {

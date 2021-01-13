@@ -50,7 +50,7 @@ public class ClickPaperServiceImp implements ClickPaperService {
 
     @Override
     public Integer getLoveCount(Integer paperId) {
-        PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperID(paperId);
+        PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperId(paperId);
         return paperMessage.getLove();
     }
 
@@ -64,7 +64,7 @@ public class ClickPaperServiceImp implements ClickPaperService {
     }
 
     private void refreshPaperLoveMessage(Integer paperId) {
-        PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperID(paperId);
+        PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperId(paperId);
         paperMessage.setLove(paperMessage.getLove() + 1);
         paperMessageDao.save(paperMessage);
     }

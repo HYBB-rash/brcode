@@ -1,12 +1,10 @@
 package suep.rg.brcode.Utils;
 
-import suep.rg.brcode.Entity.Comment;
-import suep.rg.brcode.Entity.Love;
-import suep.rg.brcode.Entity.Paper;
-import suep.rg.brcode.Entity.Watch;
+import suep.rg.brcode.Entity.*;
 import suep.rg.brcode.Entity.rev.IPV4;
 import suep.rg.brcode.Entity.send.VueComment;
 import suep.rg.brcode.Entity.send.VuePaper;
+import suep.rg.brcode.Entity.send.VuePaperItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,5 +52,16 @@ public class LoadUtils {
             vueComments.add(load(comment));
         }
         return vueComments;
+    }
+
+    public static VuePaperItem load(Paper paper, PaperMessage paperMessage, String username) {
+        VuePaperItem vuePaperItem = new VuePaperItem();
+        vuePaperItem.setTime(paperMessage.getTime());
+        vuePaperItem.setId(paper.getId());
+        vuePaperItem.setLove(paperMessage.getLove());
+        vuePaperItem.setTitle(paper.getTitle());
+        vuePaperItem.setWatch(paperMessage.getWatch());
+        vuePaperItem.setUsername(username);
+        return vuePaperItem;
     }
 }
