@@ -15,9 +15,6 @@ public interface ClickPaperController {
      * @param ipv4 点击的人的IP地址
      * @return 文章内容的打包,结构是VuePaper
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/paper/{paperId}", method = RequestMethod.POST)
     public Result watchPaper(@PathVariable Integer paperId, @RequestBody IPV4 ipv4);
 
 
@@ -26,9 +23,6 @@ public interface ClickPaperController {
      * @param paperId 文章的ID
      * @return 一个数字，文章的点赞数即可
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/paper/love/{paperId}", method = RequestMethod.GET)
     public Result getLove(@PathVariable Integer paperId);
 
     /**
@@ -37,9 +31,6 @@ public interface ClickPaperController {
      * @param userId 用户的ID
      * @return 一个bool值，true是点赞了，false是没点赞
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/paper/love/{paperId}/{userId}", method = RequestMethod.GET)
     public Result ensureHaveLove(@PathVariable Integer paperId, @PathVariable Integer userId);
 
     /**
@@ -48,9 +39,6 @@ public interface ClickPaperController {
      * @param userId 用户的ID
      * @return 一个bool值，true是点赞成功了，false是没点赞成功
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/paper/love/like/{paperId}/{userId}")
     public Result loveThisPaper(@PathVariable Integer paperId, @PathVariable Integer userId);
 
     /**
@@ -58,8 +46,5 @@ public interface ClickPaperController {
      * @param paperId 文章的ID
      * @return 根据VueComment进行打包
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/paper/comment/{paperId}")
     public Result getPaperComment(@PathVariable Integer paperId);
 }
