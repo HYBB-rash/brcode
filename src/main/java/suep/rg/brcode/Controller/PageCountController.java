@@ -10,4 +10,5 @@ public interface PageCountController {
 
     public Result getPaperCount();
     public Result getPaperCount(Integer userId);
+    public Result getUserCount();
 }

@@ -8,4 +8,6 @@ public interface PageCountService {
     public Integer getPaperCount();
 
     public Integer getPaperCountByUserId(Integer userId);
+
+    public Integer getUserCount();
 }

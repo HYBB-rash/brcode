@@ -103,4 +103,24 @@ public class LoadUtils {
         paperMessage.setId(null);
         return paperMessage;
     }
+
+    public static UserMessage initUserMessage(Integer userId) {
+        UserMessage userMessage = new UserMessage();
+        userMessage.setWatch(0);
+        userMessage.setLove(0);
+        userMessage.setIcon("img/1.jpg");
+        userMessage.setInstruction("");
+        userMessage.setMail("");
+        userMessage.setId(userId);
+        return userMessage;
+    }
+
+    public static VueUserItem pick(User user, UserMessage userMessage) {
+        VueUserItem vueUserItem = new VueUserItem();
+        vueUserItem.setUsername(user.getUsername());
+        vueUserItem.setId(user.getId());
+        vueUserItem.setLove(userMessage.getLove());
+        vueUserItem.setWatch(userMessage.getWatch());
+        return vueUserItem;
+    }
 }

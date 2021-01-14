@@ -3,14 +3,19 @@ package suep.rg.brcode.Service.Imp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import suep.rg.brcode.Dao.UserDao;
+import suep.rg.brcode.Dao.UserMessageDao;
 import suep.rg.brcode.Entity.User;
+import suep.rg.brcode.Entity.UserMessage;
 import suep.rg.brcode.Service.UserService;
+import suep.rg.brcode.Utils.LoadUtils;
 
 @Service
 public class UserServiceImp implements UserService {
 
     @Autowired
     UserDao userDao;
+    @Autowired
+    UserMessageDao userMessageDao;
 
     @Override
     public boolean isExist(String username) {
@@ -29,7 +34,9 @@ public class UserServiceImp implements UserService {
 
     @Override
     public void add(User user) {
-        userDao.save(user);
+        User save = userDao.save(user);
+        UserMessage userMessage = LoadUtils.initUserMessage(save.getId());
+        userMessageDao.save(userMessage);
     }
 
     @Override

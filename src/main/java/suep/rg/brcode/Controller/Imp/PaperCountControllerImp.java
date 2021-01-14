@@ -33,4 +33,13 @@ public class PaperCountControllerImp implements PageCountController {
         Integer count = pageCountService.getPaperCountByUserId(userId);
         return ResultFactory.buildSuccessResult(count);
     }
+
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping(value = "/Page/count/user")
+    @Override
+    public Result getUserCount() {
+        Integer count = pageCountService.getUserCount();
+        return ResultFactory.buildSuccessResult(count);
+    }
 }
