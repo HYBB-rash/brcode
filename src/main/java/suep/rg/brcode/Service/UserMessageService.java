@@ -21,7 +21,7 @@ public interface UserMessageService {
      * @param userId 用户ID
      * @return 二进制数组
      */
-    public byte[] getUserIcon(Integer userId) throws IOException;
+    public String getUserIcon(Integer userId);
 
     /**
      * 根据用户ID返回用户的姓名

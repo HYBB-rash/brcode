@@ -30,19 +30,21 @@ public class PaperListPageServiceImp implements PaperListPageService {
 
 
     private Page<PaperMessage> getPaperList(Integer index, Integer size, String order) {
-        Pageable pageable = PageRequest.of(index, size, Sort.by(order));
+        Pageable pageable = PageRequest.of(index, size, Sort.by(order).descending());
         return paperMessageDao.findAll(pageable);
     }
 
     private Page<PaperMessage> getPaperList(Integer index, Integer size, String order, Integer userId) {
-        Pageable pageable = PageRequest.of(index, size, Sort.by(order));
+        Pageable pageable = PageRequest.of(index, size, Sort.by(order).descending());
         return paperMessageDao.findPaperMessageByUserId(userId, pageable);
     }
 
     private List<VuePaperItem> load(Page<PaperMessage> all) {
         List<VuePaperItem> list = new LinkedList<>();
         for (PaperMessage paperMessage : all) {
-            Paper paper = paperDao.findPaperById(paperMessage.getId());
+            Paper paper = paperDao.findPaperById(paperMessage.getPaperId());
+//            System.out.println(paperMessage);
+//            System.out.println(paper);
             String username = userDao.findUserById(paperMessage.getUserId()).getUsername();
             VuePaperItem vuePaperItem = LoadUtils.load(paper, paperMessage, username);
             list.add(vuePaperItem);

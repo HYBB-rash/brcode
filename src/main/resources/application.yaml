@@ -12,3 +12,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     database-platform: org.hibernate.dialect.MySQLDialect
+  mvc:
+    static-path-pattern: /img/**
+  resources:
+    static-locations: file:D:\Users\hyong\IdeaProjects\brcode\src\main\resources\static\img

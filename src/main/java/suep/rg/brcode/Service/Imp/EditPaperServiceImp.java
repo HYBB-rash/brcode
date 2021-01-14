@@ -37,7 +37,8 @@ public class EditPaperServiceImp implements EditPaperService {
             paperMessage = paperMessageDao.findPaperMessageByPaperId(paper.getPaperId());
             paperMessage.setTime(TimeUtils.getNowTime());
         }
-        paperMessageDao.save(paperMessage);
+        PaperMessage message = paperMessageDao.save(paperMessage);
+        paper.setPaperId(message.getPaperId());
         return true;
     }
 

@@ -43,8 +43,10 @@ public class ClickPaperServiceImp implements ClickPaperService {
 
     @Override
     public void recordWatch(IPV4 ipv4, Integer paperId) {
-        watchDao.save(LoadUtils.load(ipv4, paperId));
-        refreshPaperWatchMessage(paperId);
+        if (watchDao.findWatchByIpv4AndPaperId(ipv4.getIp(), paperId) == null) {
+            watchDao.save(LoadUtils.load(ipv4, paperId));
+            refreshPaperWatchMessage(paperId);
+        }
     }
 
     @Override

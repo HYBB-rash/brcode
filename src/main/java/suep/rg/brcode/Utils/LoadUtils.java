@@ -58,7 +58,7 @@ public class LoadUtils {
     public static VuePaperItem load(Paper paper, PaperMessage paperMessage, String username) {
         VuePaperItem vuePaperItem = new VuePaperItem();
         vuePaperItem.setTime(paperMessage.getTime());
-        vuePaperItem.setId(paper.getId());
+        if (paper.getId() != null) vuePaperItem.setId(paper.getId());
         vuePaperItem.setLove(paperMessage.getLove());
         vuePaperItem.setTitle(paper.getTitle());
         vuePaperItem.setWatch(paperMessage.getWatch());

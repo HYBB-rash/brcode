@@ -25,9 +25,9 @@ public class UserMessageServiceImp implements UserMessageService {
     PaperMessageDao paperMessageDao;
 
     @Override
-    public byte[] getUserIcon(Integer userId) throws IOException {
+    public String getUserIcon(Integer userId){
         UserMessage userMessageById = userMessageDao.findUserMessageById(userId);
-        return LoadUtils.load(userMessageById.getIcon());
+        return userMessageById.getIcon();
     }
 
     @Override

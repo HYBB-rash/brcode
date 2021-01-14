@@ -15,8 +15,8 @@ public class UserMessageServiceTests {
 
     @Test
     void testGetUserIcon() throws IOException {
-        byte[] userIcon = userMessageService.getUserIcon(2);
-        for (byte b : userIcon) System.out.println(b);
+        String userIcon = userMessageService.getUserIcon(2);
+        System.out.println(userIcon);
     }
 
     @Test

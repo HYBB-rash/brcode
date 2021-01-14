@@ -14,19 +14,15 @@ public interface UserMessageController {
      * @param userId 用户ID
      * @return 二进制数组
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/UserMessage/icon/{userId}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public byte[] getUserIcon(@PathVariable Integer userId);
+
+    public Result getUserIcon(@PathVariable Integer userId);
 
     /**
      * 根据用户ID返回用户的姓名
      * @param userId 用户ID
      * @return string，用户的名字即可
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/UserMessage/username/{userId}")
+
     public Result getUsername(@PathVariable Integer userId);
 
     /**
@@ -34,9 +30,7 @@ public interface UserMessageController {
      * @param paperId 文章ID
      * @return Integer 用户的ID即可
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/UserMessage/{paperId}")
+
     public Result getUserId(@PathVariable Integer paperId);
 
     /**
@@ -44,9 +38,7 @@ public interface UserMessageController {
      * @param userId 用户id
      * @return 根据VueBaseMessage打包
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/UserMessage/base/{userId}")
+
     public Result getUserBaseMessage(@PathVariable Integer userId);
 
     /**
@@ -54,9 +46,7 @@ public interface UserMessageController {
      * @param userId 用户ID
      * @return String即可，instruction的内容
      */
-    @CrossOrigin
-    @ResponseBody
-    @RequestMapping(value = "/UserMessage/instruction/{userId}")
+
     public Result getUserInstruction(@PathVariable Integer userId);
 
 

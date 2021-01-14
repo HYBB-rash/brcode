@@ -15,7 +15,7 @@ public interface ClickPaperController {
      * @param ipv4 点击的人的IP地址
      * @return 文章内容的打包,结构是VuePaper
      */
-    public Result watchPaper(@PathVariable Integer paperId, @RequestBody IPV4 ipv4);
+    public Result watchPaper(IPV4 ipv4, Integer paperId);
 
 
     /**
