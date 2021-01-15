@@ -41,6 +41,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public int getUserId(String username) {
-        return 0;
+        User user = userDao.findByUsername(username);
+        return user.getId();
     }
 }

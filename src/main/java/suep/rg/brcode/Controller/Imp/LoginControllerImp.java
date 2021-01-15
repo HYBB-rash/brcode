@@ -9,6 +9,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
@@ -37,6 +38,7 @@ public class LoginControllerImp implements LoginController {
         usernamePasswordToken.setRememberMe(true);
         try {
             subject.login(usernamePasswordToken);
+            System.out.println(user);
             int id = userService.getUserId(user.getUsername());
             session.setAttribute("user", id);
             System.out.println(id);
@@ -48,7 +50,7 @@ public class LoginControllerImp implements LoginController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/logout")
+    @GetMapping(value = "/logout")
     @ResponseBody
     @Override
     public Result logout() {
