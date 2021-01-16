@@ -2,6 +2,7 @@ package suep.rg.brcode.Service.Imp;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import suep.rg.brcode.Dao.CommentDao;
 import suep.rg.brcode.Dao.PaperMessageDao;
 import suep.rg.brcode.Dao.UserMessageDao;
 import suep.rg.brcode.Service.PageCountService;
@@ -13,6 +14,8 @@ public class PageCountServiceImp implements PageCountService {
     PaperMessageDao paperMessageDao;
     @Autowired
     UserMessageDao userMessageDao;
+    @Autowired
+    CommentDao commentDao;
 
     @Override
     public Integer getPaperCount() {
@@ -27,5 +30,10 @@ public class PageCountServiceImp implements PageCountService {
     @Override
     public Integer getUserCount() {
         return Math.toIntExact(userMessageDao.count());
+    }
+
+    @Override
+    public Integer getCommentsCountByUserId(Integer userId) {
+        return commentDao.getCommentsByUserId(userId).size();
     }
 }

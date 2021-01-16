@@ -10,4 +10,6 @@ public interface PageCountService {
     public Integer getPaperCountByUserId(Integer userId);
 
     public Integer getUserCount();
+
+    public Integer getCommentsCountByUserId (Integer userId);
 }

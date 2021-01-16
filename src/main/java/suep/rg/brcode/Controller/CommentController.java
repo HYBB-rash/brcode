@@ -30,4 +30,8 @@ public interface CommentController {
      * @return 成功
      */
     public Result saveRely(Reply reply);
+
+    public Result getComments(Integer userId, Integer index, Integer size);
+
+    public Result deleteCommentId (Integer commentId);
 }
