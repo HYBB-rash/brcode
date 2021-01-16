@@ -1,7 +1,9 @@
 package suep.rg.brcode.Utils;
 
 import suep.rg.brcode.Entity.*;
+import suep.rg.brcode.Entity.rev.BaseComment;
 import suep.rg.brcode.Entity.rev.IPV4;
+import suep.rg.brcode.Entity.rev.Reply;
 import suep.rg.brcode.Entity.send.*;
 
 import java.io.File;
@@ -122,5 +124,33 @@ public class LoadUtils {
         vueUserItem.setLove(userMessage.getLove());
         vueUserItem.setWatch(userMessage.getWatch());
         return vueUserItem;
+    }
+
+    public static VueReply load(String username, Comment comment) {
+        VueReply vueReply = new VueReply();
+        vueReply.setUsername(username);
+        vueReply.setContent(comment.getContent());
+        return vueReply;
+    }
+
+    public static Comment init(BaseComment baseComment) {
+        Comment comment = new Comment();
+        comment.setContent(baseComment.getContent());
+        comment.setTime(TimeUtils.getNowTime());
+        comment.setStatus(1);
+        comment.setUserId(baseComment.getUserId());
+        comment.setPaperId(baseComment.getPaperId());
+        return comment;
+    }
+
+    public static Comment init(Reply reply) {
+        Comment comment = new Comment();
+        comment.setCommentId(reply.getCommentId());
+        comment.setStatus(1);
+        comment.setTime(TimeUtils.getNowTime());
+        comment.setContent(reply.getContent());
+        comment.setUserId(reply.getUserId());
+        comment.setPaperId(reply.getPaperId());
+        return comment;
     }
 }
