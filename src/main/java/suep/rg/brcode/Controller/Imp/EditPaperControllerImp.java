@@ -20,7 +20,7 @@ public class EditPaperControllerImp implements EditPaperController {
     @ResponseBody
     @PostMapping(value = "/GetPaperContent")
     @Override
-    public Result getPaperContent(UserIdAndPaperId id) {
+    public Result getPaperContent(@RequestBody UserIdAndPaperId id) {
         VuePaper paper = editPaperService.getPaperContent(id.getUserId(), id.getPaperId());
         return ResultFactory.buildSuccessResult(paper);
     }
@@ -41,5 +41,13 @@ public class EditPaperControllerImp implements EditPaperController {
     public Result savePaperAndSend(@RequestBody VuePaper paper, @PathVariable Integer userId) {
         Boolean savePaperAndSent = editPaperService.savePaperAndSent(paper, userId);
         return ResultFactory.buildSuccessResult(savePaperAndSent);
+    }
+
+    @Override
+    @ResponseBody
+    @RequestMapping(value = "/Delete/paper/{paperId}")
+    public Result deletePaper(@PathVariable Integer paperId) {
+        Boolean deletePaper = editPaperService.deletePaper(paperId);
+        return ResultFactory.buildSuccessResult(deletePaper);
     }
 }

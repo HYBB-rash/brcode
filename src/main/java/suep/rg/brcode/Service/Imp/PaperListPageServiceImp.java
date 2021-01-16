@@ -31,12 +31,12 @@ public class PaperListPageServiceImp implements PaperListPageService {
 
     private Page<PaperMessage> getPaperList(Integer index, Integer size, String order) {
         Pageable pageable = PageRequest.of(index, size, Sort.by(order).descending());
-        return paperMessageDao.findAll(pageable);
+        return paperMessageDao.findPaperMessageByStatusGreaterThanEqual(1 ,pageable);
     }
 
     private Page<PaperMessage> getPaperList(Integer index, Integer size, String order, Integer userId) {
         Pageable pageable = PageRequest.of(index, size, Sort.by(order).descending());
-        return paperMessageDao.findPaperMessageByUserId(userId, pageable);
+        return paperMessageDao.findPaperMessageByUserIdAndStatusGreaterThanEqual(userId, 0, pageable);
     }
 
     private List<VuePaperItem> load(Page<PaperMessage> all) {

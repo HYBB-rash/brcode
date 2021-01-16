@@ -31,4 +31,11 @@ public interface EditPaperController {
      * @return 返回一个成功信息即可
      */
     public Result savePaperAndSend(@RequestBody VuePaper paper, Integer userId);
+
+    /**
+     * 删除文章
+     * @param paperId 文章ID
+     * @return 返回删除是否成功
+     */
+    public Result deletePaper(Integer paperId);
 }

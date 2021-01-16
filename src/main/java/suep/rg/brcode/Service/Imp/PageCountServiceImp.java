@@ -16,12 +16,12 @@ public class PageCountServiceImp implements PageCountService {
 
     @Override
     public Integer getPaperCount() {
-        return Math.toIntExact(paperMessageDao.count());
+        return Math.toIntExact(paperMessageDao.getPaperMessagesByStatusGreaterThanEqual(1).size());
     }
 
     @Override
     public Integer getPaperCountByUserId(Integer userId) {
-        return paperMessageDao.getPaperMessageByUserId(userId).size();
+        return paperMessageDao.getPaperMessageByUserIdAndStatusGreaterThanEqual(userId, 0).size();
     }
 
     @Override

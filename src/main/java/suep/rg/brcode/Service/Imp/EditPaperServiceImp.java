@@ -50,4 +50,12 @@ public class EditPaperServiceImp implements EditPaperService {
         paperMessageDao.save(paperMessage);
         return null;
     }
+
+    @Override
+    public Boolean deletePaper(Integer paperId) {
+        PaperMessage paperMessage = paperMessageDao.findPaperMessageByPaperId(paperId);
+        paperMessage.setStatus(-1);
+        paperMessageDao.save(paperMessage);
+        return true;
+    }
 }

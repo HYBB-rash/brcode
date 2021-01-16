@@ -1,7 +1,6 @@
 package suep.rg.brcode.Service;
 
 import org.springframework.stereotype.Service;
-import suep.rg.brcode.Entity.send.VueEditPaper;
 import suep.rg.brcode.Entity.send.VuePaper;
 
 @Service
@@ -28,4 +27,6 @@ public interface EditPaperService {
      * @return 返回一个成功信息即可
      */
     public Boolean savePaperAndSent(VuePaper paper, Integer userId);
+
+    public Boolean deletePaper(Integer paperId);
 }
