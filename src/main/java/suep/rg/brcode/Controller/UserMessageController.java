@@ -3,6 +3,7 @@ package suep.rg.brcode.Controller;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import suep.rg.brcode.Entity.UserMessage;
 import suep.rg.brcode.Result.Result;
 
 @Controller
@@ -49,5 +50,7 @@ public interface UserMessageController {
 
     public Result getUserInstruction(@PathVariable Integer userId);
 
+    public Result getUserMessage(@PathVariable Integer userId);
 
+    public Result saveUserMessage(@RequestBody UserMessage userMessage);
 }

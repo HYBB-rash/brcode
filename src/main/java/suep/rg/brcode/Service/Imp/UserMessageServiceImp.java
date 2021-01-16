@@ -53,4 +53,15 @@ public class UserMessageServiceImp implements UserMessageService {
     public String getUserInstruction(Integer userId) {
         return userMessageDao.findUserMessageById(userId).getInstruction();
     }
+
+    @Override
+    public UserMessage getUserMessageByUserId(Integer userId) {
+        return userMessageDao.findUserMessageById(userId);
+    }
+
+    @Override
+    public Boolean saveUserMessage(UserMessage userMessage) {
+        userMessageDao.save(userMessage);
+        return true;
+    }
 }

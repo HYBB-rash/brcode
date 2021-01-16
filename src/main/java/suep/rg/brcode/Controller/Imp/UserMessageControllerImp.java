@@ -3,12 +3,10 @@ package suep.rg.brcode.Controller.Imp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import suep.rg.brcode.Controller.UserMessageController;
 import suep.rg.brcode.Dao.UserMessageDao;
+import suep.rg.brcode.Entity.UserMessage;
 import suep.rg.brcode.Entity.send.VueBaseMessage;
 import suep.rg.brcode.Result.Result;
 import suep.rg.brcode.Result.ResultFactory;
@@ -62,5 +60,23 @@ public class UserMessageControllerImp implements UserMessageController {
     public Result getUserInstruction(@PathVariable Integer userId) {
         String userInstruction = userMessageService.getUserInstruction(userId);
         return ResultFactory.buildSuccessResult(userInstruction);
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping(value = "/UserMessage/edit/{userId}")
+    @Override
+    public Result getUserMessage(@PathVariable Integer userId) {
+        UserMessage userMessage = userMessageService.getUserMessageByUserId(userId);
+        return ResultFactory.buildSuccessResult(userMessage);
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping(value = "/UserMessage/save")
+    @Override
+    public Result saveUserMessage(@RequestBody UserMessage userMessage) {
+        Boolean result = userMessageService.saveUserMessage(userMessage);
+        return ResultFactory.buildSuccessResult(result);
     }
 }

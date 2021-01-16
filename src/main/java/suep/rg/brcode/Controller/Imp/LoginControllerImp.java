@@ -87,7 +87,7 @@ public class LoginControllerImp implements LoginController {
     }
 
     @CrossOrigin
-    @PostMapping(value = "/authentication")
+    @GetMapping(value = "/authentication")
     @ResponseBody
     @Override
     public String authentication() {

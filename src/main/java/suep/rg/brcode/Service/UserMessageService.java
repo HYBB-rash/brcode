@@ -1,9 +1,8 @@
 package suep.rg.brcode.Service;
 
 import org.springframework.stereotype.Service;
+import suep.rg.brcode.Entity.UserMessage;
 import suep.rg.brcode.Entity.send.VueBaseMessage;
-
-import java.io.IOException;
 
 @Service
 public interface UserMessageService {
@@ -50,4 +49,8 @@ public interface UserMessageService {
      * @return String即可，instruction的内容
      */
     public String getUserInstruction(Integer userId);
+
+    public UserMessage getUserMessageByUserId (Integer userId);
+
+    public Boolean saveUserMessage(UserMessage userMessage);
 }
